@@ -1,0 +1,453 @@
+/* =============================================
+   CATÁLOGO DE PAQUETES — Luxury Dark Theme
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap');
+
+/* --- Variables --- */
+:root {
+    --bg: #0a0c10;
+    --surface: #111520;
+    --surface2: #181d2e;
+    --gold: #c9a84c;
+    --gold-lt: #e8cc80;
+    --gold-dim: rgba(201, 168, 76, .15);
+    --text: #e8e4da;
+    --muted: #7a7a8a;
+    --danger: #7f1d1d;
+    --danger-lt: #fca5a5;
+    --radius: 14px;
+    --transition: .35s cubic-bezier(.4, 0, .2, 1);
+}
+
+/* --- Reset & Base --- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    background-color: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    /* subtle noise texture */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.025'/%3E%3C/svg%3E");
+}
+
+/* --- Header --- */
+header {
+    text-align: center;
+    padding: 80px 24px 60px;
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(201, 168, 76, .12) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    letter-spacing: .08em;
+    color: var(--gold-lt);
+    line-height: 1.1;
+}
+
+header p {
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: .95rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+/* Back link (catalogo pages) */
+header .volver {
+    display: inline-block;
+    margin-top: 24px;
+    color: var(--gold);
+    text-decoration: none;
+    font-size: .85rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--transition), color var(--transition);
+}
+
+header .volver:hover {
+    color: var(--gold-lt);
+    border-color: var(--gold);
+}
+
+/* --- Divider Line --- */
+.divider {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto 60px;
+    opacity: .5;
+}
+
+/* =============================================
+   CATALOG CARDS
+   ============================================= */
+.catalogo {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding: 0 24px 80px;
+}
+
+.card {
+    background: var(--surface);
+    border: 1px solid rgba(255, 255, 255, .06);
+    padding: 36px 28px 32px;
+    border-radius: var(--radius);
+    width: 290px;
+    text-align: center;
+    position: relative;
+    transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, .03) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, .5), 0 0 0 1px rgba(201, 168, 76, .2);
+    border-color: rgba(201, 168, 76, .25);
+}
+
+/* Highlighted card */
+.destacado {
+    border-color: var(--gold);
+    background: var(--surface2);
+    box-shadow: 0 0 40px rgba(201, 168, 76, .08);
+}
+
+.destacado::after {
+    content: '★ POPULAR';
+    position: absolute;
+    top: 14px;
+    right: -28px;
+    background: var(--gold);
+    color: #0a0c10;
+    font-size: .65rem;
+    font-weight: 500;
+    letter-spacing: .14em;
+    padding: 4px 36px;
+    transform: rotate(35deg);
+}
+
+.card h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.55rem;
+    color: var(--gold-lt);
+    letter-spacing: .04em;
+    margin-bottom: 20px;
+}
+
+.card ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 24px;
+}
+
+.card ul li {
+    font-size: .875rem;
+    color: var(--muted);
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, .05);
+    letter-spacing: .03em;
+}
+
+.card ul li:last-child {
+    border-bottom: none;
+}
+
+.precio {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: .02em;
+    margin: 20px 0 24px;
+}
+
+.btn {
+    display: inline-block;
+    background: transparent;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 11px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: .8rem;
+    font-weight: 500;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    transition: background var(--transition), color var(--transition), box-shadow var(--transition);
+}
+
+.btn:hover {
+    background: var(--gold);
+    color: #0a0c10;
+    box-shadow: 0 0 20px rgba(201, 168, 76, .35);
+}
+
+.destacado .btn {
+    background: var(--gold);
+    color: #0a0c10;
+}
+
+.destacado .btn:hover {
+    background: var(--gold-lt);
+    box-shadow: 0 0 28px rgba(201, 168, 76, .5);
+}
+
+/* =============================================
+   PAYMENT SECTION
+   ============================================= */
+.pago {
+    background: var(--surface);
+    border: 1px solid rgba(255, 255, 255, .06);
+    margin: 0 24px 80px;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 80px;
+    padding: 48px 40px;
+    border-radius: var(--radius);
+    text-align: center;
+}
+
+.pago h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.8rem;
+    color: var(--gold-lt);
+    margin-bottom: 28px;
+    letter-spacing: .04em;
+}
+
+.pago>p {
+    color: var(--muted);
+    margin: 14px 0;
+    line-height: 1.6;
+    font-size: .9rem;
+}
+
+.cuenta {
+    background: var(--bg);
+    border: 1px solid rgba(201, 168, 76, .2);
+    padding: 16px 24px;
+    margin: 14px 0;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    letter-spacing: .2em;
+    color: var(--gold-lt);
+    font-family: 'DM Mono', 'Courier New', monospace;
+    cursor: pointer;
+    transition: border-color var(--transition), background var(--transition);
+    position: relative;
+}
+
+.cuenta:hover {
+    border-color: var(--gold);
+    background: var(--gold-dim);
+}
+
+.importante {
+    margin-top: 28px;
+    padding: 18px 20px;
+    background: rgba(127, 29, 29, .35);
+    border: 1px solid rgba(220, 38, 38, .3);
+    border-radius: 8px;
+    font-size: .85rem;
+    color: var(--danger-lt);
+    letter-spacing: .03em;
+    line-height: 1.5;
+}
+
+/* =============================================
+   DETAIL PAGE (catalogo1.html)
+   ============================================= */
+.detalle-paquete {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+.descripcion h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    color: var(--gold-lt);
+    margin-bottom: 16px;
+}
+
+.descripcion ul {
+    list-style: none;
+    padding: 0;
+}
+
+.descripcion ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, .06);
+    color: var(--muted);
+    font-size: .9rem;
+    letter-spacing: .03em;
+}
+
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+}
+
+.galeria img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, .07);
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.galeria img:hover {
+    transform: scale(1.04);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, .6);
+}
+
+.compra {
+    text-align: center;
+    padding: 36px;
+    background: var(--surface);
+    border-radius: var(--radius);
+    border: 1px solid rgba(201, 168, 76, .2);
+}
+
+/* =============================================
+   FOOTER
+   ============================================= */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--muted);
+    font-size: .78rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    border-top: 1px solid rgba(255, 255, 255, .05);
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 600px) {
+    .pago {
+        padding: 32px 20px;
+    }
+
+    .cuenta {
+        font-size: .9rem;
+        letter-spacing: .12em;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 340px;
+    }
+}
+
+/* =============================================
+   ANIMATIONS
+   ============================================= */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+header {
+    animation: fadeUp .7s ease both;
+}
+
+.card {
+    animation: fadeUp .6s ease both;
+}
+
+.card:nth-child(2) {
+    animation-delay: .1s;
+}
+
+.card:nth-child(3) {
+    animation-delay: .2s;
+}
+
+.pago {
+    animation: fadeUp .6s .25s ease both;
+}
+
+/* =============================================
+   COPY FEEDBACK
+   ============================================= */
+.cuenta.copiado {
+    border-color: var(--gold);
+    background: var(--gold-dim);
+}
+
+.toast-copia {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%) translateY(16px);
+    background: var(--gold);
+    color: #0a0c10;
+    padding: 12px 28px;
+    border-radius: 100px;
+    font-size: .85rem;
+    font-weight: 500;
+    letter-spacing: .08em;
+    opacity: 0;
+    transition: opacity .3s ease, transform .3s ease;
+    pointer-events: none;
+    z-index: 9999;
+    white-space: nowrap;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, .4);
+}
+
+.toast-copia.visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
